@@ -1,0 +1,12 @@
+version: '3'
+services:
+  activemq:
+    build:
+      context: .
+      dockerfile: Dockerfile-ActiveMQ
+    restart: always
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+  
+

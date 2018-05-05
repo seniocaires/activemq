@@ -1,0 +1,13 @@
+FROM openjdk:8
+
+ENV ACTIVEMQ_VERSION=5.15.3
+
+WORKDIR /usr/share/activemq
+
+RUN apt update && apt install --no-install-recommends -y curl && \
+    curl http://mirror.nbtelecom.com.br/apache//activemq/$ACTIVEMQ_VERSION/apache-activemq-$ACTIVEMQ_VERSION-bin.tar.gz -o activemq.tar.gz && \
+    tar xvzf activemq.tar.gz && mv apache-activemq-$ACTIVEMQ_VERSION/* . && rm -rf apache-activemq-$ACTIVEMQ_VERSION
+
+EXPOSE 61616 8161
+
+ENTRYPOINT ["bin/activemq", "console"]
