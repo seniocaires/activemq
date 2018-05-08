@@ -6,7 +6,11 @@ services:
       dockerfile: Dockerfile-ActiveMQ
     restart: always
     ports:
-      - "61616:61616"
+      - "61616:61616" # transportConnector name="openwire" uri="tcp:..."
+      - "5672:5672" # transportConnector name="amqp" uri="amqp:..."
+      - "61613:61613" # transportConnector name="stomp" uri="stomp:..."
+      - "1883:1883" # transportConnector name="mqtt" uri="mqtt:..."
+      - "61614:61614" # transportConnector name="ws" uri="ws:..."
       - "8161:8161"
   
 
